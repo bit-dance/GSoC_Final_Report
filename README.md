@@ -1,7 +1,7 @@
 # **GSoC_Final_Report**
 This repo is for saving my work during GSoC and make records for some undone works.
 First of all, I want to thank my mentor **@lxc** . She gave me lots of help and advices.
-And I also want to thank Curve conmmunity for their attention on open source and help fresh men.
+And I also want to thank Curve community for their attention on open source and help fresh men.
 
 ## **Introduction**
 Curve has a NameServer which manages namespace metadata information and includes FileInfo,PageFileSegment,PageFileChunkInfo components. And we could find it is easy to show the file information between directories and files in KV storage and just like this:
@@ -57,11 +57,11 @@ And when we close the client we should close the connection and statement to avo
 And for supporting TXN here i refer to ETCD's support for txn and use the Revision field to simulate multi version control.And some core functions here:
 https://github.com/opencurve/curve/pull/2527/files#diff-6efcb07f8af51c8ffd06bddb68327357f77d9b78e17a37b2b6a6f554bc50eb06R99 
 
-And then i use MySQL commit to ensure the atomicity of the transaction. And here is the core code:
+And then i use MySQL auto_commit to ensure the atomicity of the transaction. And here is the core code:
 ```cpp
 conn_->setAutoCommit(false);
 
-some operations
+some operations...
 
 if(some operations failed){
     conn_->rollback();
@@ -174,6 +174,9 @@ We must test the leader election in a large cluster and ensure the correctness o
 
 ### **3. Build a cluster to test storage**
 Here i made lots of affort to build a cluster to test the storage engine but i failed. Most of the time i spent on building the cluster and i have no time to test the storage engine. So i think it is very important to build a cluster to test the storage engine and ensure the correctness of the storage engine.
+
+## **Summary**
+In this GSoC,I have learned a lot, especially in building the environment. I have learned to read scripts myself, push images, compile using bazel, and run individual tests using bazel. I have also learned how to collaborate among communities and strengthened my confidence in participating in open source. I will continue to complete tasks and participate in the curve community.
 
 
 
